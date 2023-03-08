@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CriarProjetoActivity">
+
+    <Button
+        android:id="@+id/btnCriarProjeto"
+        android:layout_width="171dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#03A9F4"
+        android:onClick="CriarProjeto"
+        android:text="Criar projeto"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelar"
+        app:layout_constraintTop_toBottomOf="@+id/btnSalvarData"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="146dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/design_default_color_error"
+        android:onClick="Cancelar"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnCriarProjeto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSalvarData"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/nome_projeto"
+        android:layout_width="351dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="20dp"
+        android:background="#03A9F4"
+        android:backgroundTint="#03A9F4"
+        android:hint="Nome do projeto"
+        android:inputType="textNoSuggestions"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/texto_calendario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Escolha uma data de início"
+        android:textColor="#03A9F4"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/calendario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nome_projeto" />
+
+    <CalendarView
+        android:id="@+id/calendario"
+        android:layout_width="326dp"
+        android:layout_height="311dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnSalvarData"
+        app:layout_constraintTop_toBottomOf="@id/texto_calendario"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="195dp"></CalendarView>
+
+    <Button
+        android:id="@+id/btnSalvarData"
+        android:layout_width="171dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#03A9F4"
+        android:onClick="SalvarData"
+        android:text="Salvar data"
+        app:layout_constraintBottom_toTopOf="@id/btnCriarProjeto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendario"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
