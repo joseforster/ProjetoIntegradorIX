@@ -12,6 +12,7 @@
         android:theme="@style/Theme.Projeto_integrador_ix"
         tools:targetApi="31">
         <activity android:name=".CriarProjetoActivity"></activity>
+        <activity android:name=".CriarRequisitoActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -50,17 +50,23 @@ public class CriarProjetoActivity extends Activity {
         TextView textoCalendario = (TextView) findViewById(R.id.texto_calendario);
 
         if(this.isDataInicioPreenchido){
-            this.projetoViewModel.setDataFim(dt);
 
-            Button btnSalvarData = findViewById(R.id.btnSalvarData);
+            if(dt.before(projetoViewModel.getDataInicio())){
 
-            btnSalvarData.setVisibility(view.INVISIBLE);
+                Toast.makeText(this, "Data fim deve ser maior que data início", Toast.LENGTH_SHORT).show();
+            }else{
+                this.projetoViewModel.setDataFim(dt);
 
-            Button btnCriarProjeto = findViewById(R.id.btnCriarProjeto);
+                Button btnSalvarData = findViewById(R.id.btnSalvarData);
 
-            btnCriarProjeto.setVisibility(view.VISIBLE);
+                btnSalvarData.setVisibility(view.INVISIBLE);
 
-            textoCalendario.setText("Data salvas com sucesso");
+                Button btnCriarProjeto = findViewById(R.id.btnCriarProjeto);
+
+                btnCriarProjeto.setVisibility(view.VISIBLE);
+
+                textoCalendario.setText("Data salvas com sucesso");
+            }
 
         }else{
             this.projetoViewModel.setDataInicio(dt);
@@ -76,17 +82,22 @@ public class CriarProjetoActivity extends Activity {
 
         TextView textView = findViewById(R.id.nome_projeto);
 
-        this.projetoViewModel.setDescricao(textView.getText().toString());
-
-        boolean isProjetoCriadoComSucesso = new ProjetoDAO().Create(this.projetoViewModel);
-
-        if(isProjetoCriadoComSucesso){
-            Toast.makeText(this, "Projeto criado com sucesso", Toast.LENGTH_SHORT).show();
+        if(textView.getText().toString().isEmpty()){
+            Toast.makeText(this, "Descrição do projeto é obrigatório", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this, "Erro ao criar projeto", Toast.LENGTH_SHORT).show();
-        }
 
-        this.Cancelar(view);
+            this.projetoViewModel.setDescricao(textView.getText().toString());
+
+            boolean isProjetoCriadoComSucesso = new ProjetoDAO().Create(this.projetoViewModel);
+
+            if(isProjetoCriadoComSucesso){
+                Toast.makeText(this, "Projeto criado com sucesso", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "Erro ao criar projeto", Toast.LENGTH_SHORT).show();
+            }
+
+            this.Cancelar(view);
+        }
     }
 
     public void Cancelar(View view){

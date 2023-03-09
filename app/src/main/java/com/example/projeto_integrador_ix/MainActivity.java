@@ -22,5 +22,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btnIrParaCriarRequisito = (Button) findViewById(R.id.btnIrParaCriarRequisito);
+
+        btnIrParaCriarRequisito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,CriarRequisitoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

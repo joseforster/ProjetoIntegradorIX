@@ -1,6 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CriarRequisitoActivity"
+    >
+
+    <EditText
+        android:id="@+id/nome_requisito"
+        android:layout_width="351dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="20dp"
+        android:background="#03A9F4"
+        android:backgroundTint="#03A9F4"
+        android:hint="Nome do requisito"
+        android:inputType="textNoSuggestions"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/texto_projeto"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Escolha um projeto"
+        android:textAlignment="center"
+        android:textColor="#000c66"
+        app:layout_constraintBottom_toTopOf="@+id/lista_projeto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nome_requisito"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/lista_projeto"
+        android:background="#03A9F4"
+        android:backgroundTint="#03A9F4"
+        android:hint="Projeto"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="351dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto_projeto" />
+
+
+    <TextView
+        android:id="@+id/texto_nivel_importancia"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Nível de importância"
+        android:textAlignment="center"
+        android:textColor="#000c66"
+        app:layout_constraintBottom_toTopOf="@+id/lista_nivel_importancia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lista_projeto"
+        app:layout_constraintEnd_toStartOf="@id/texto_nivel_dificuldade"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/lista_nivel_importancia"
+        android:layout_width="160dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toStartOf="@id/lista_nivel_dificuldade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto_nivel_importancia" />
+
+    <TextView
+        android:id="@+id/texto_nivel_dificuldade"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Nível de dificuldade"
+        android:textAlignment="center"
+        android:textColor="#000c66"
+        app:layout_constraintBottom_toTopOf="@+id/lista_nivel_dificuldade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/texto_nivel_importancia"
+        app:layout_constraintTop_toBottomOf="@+id/lista_projeto"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/lista_nivel_dificuldade"
+        android:layout_width="160dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/lista_nivel_importancia"
+        app:layout_constraintTop_toBottomOf="@+id/texto_nivel_dificuldade" />
+
+    <EditText
+        android:id="@+id/tempo_estimado"
+        android:layout_width="351dp"
+        android:layout_height="54dp"
+        android:background="#03A9F4"
+        android:backgroundTint="#03A9F4"
+        android:hint="Tempo estimado"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/lista_nivel_importancia"
+        />
+
+    <Button
+        android:id="@+id/btnCriarRequisito"
+        tools:ignore="MissingConstraints"
+        android:layout_width="171dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#03A9F4"
+        android:onClick="CriarRequisito"
+        android:text="Criar requisito"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnCancelar"
+        />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="146dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/design_default_color_error"
+        android:onClick="Cancelar"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnCriarRequisito"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
