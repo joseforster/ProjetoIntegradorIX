@@ -10,6 +10,20 @@ public class ProjetoViewModel {
     private String Descricao;
     private Calendar DataInicio;
 
+    public ProjetoViewModel(int id, String descricao) {
+        Id = id;
+        Descricao = descricao;
+    }
+
+    public ProjetoViewModel(String descricao, Calendar dataInicio, Calendar dataFim) {
+        Descricao = descricao;
+        DataInicio = dataInicio;
+        DataFim = dataFim;
+    }
+
+    public ProjetoViewModel() {
+    }
+
     public Calendar getDataInicio() {
         return DataInicio;
     }

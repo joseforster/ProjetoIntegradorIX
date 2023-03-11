@@ -8,7 +8,7 @@ import util.IDAO;
 public class RequisitoDAO implements IDAO<RequisitoViewModel> {
     @Override
     public boolean Create(RequisitoViewModel viewModel) {
-        return false;
+        return true;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class RequisitoDAO implements IDAO<RequisitoViewModel> {
     }
 
     @Override
-    public ArrayList<RequisitoViewModel> ReadAll() {
+    public ArrayList<String> ReadAll() {
         return null;
     }
 }

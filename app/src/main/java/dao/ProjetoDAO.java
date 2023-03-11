@@ -8,7 +8,7 @@ import util.IDAO;
 public class ProjetoDAO implements IDAO<ProjetoViewModel> {
     @Override
     public boolean Create(ProjetoViewModel viewModel) {
-        return false;
+        return true;
     }
 
     @Override
@@ -22,7 +22,13 @@ public class ProjetoDAO implements IDAO<ProjetoViewModel> {
     }
 
     @Override
-    public ArrayList<ProjetoViewModel> ReadAll() {
-        return null;
+    public ArrayList<String> ReadAll() {
+        //Apenas para apresentação e teste
+        ArrayList<String> lista = new ArrayList<String>();
+
+        lista.add("1 - Projeto Um");
+        lista.add("2 - Projeto Dois");
+
+        return lista;
     }
 }

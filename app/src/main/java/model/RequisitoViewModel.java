@@ -8,8 +8,19 @@ public class RequisitoViewModel {
     private Date DataCriacao;
     private int NivelImportancia;
     private int NivelDificuldade;
-    private Number TempoEstimado;
-    private ProjetoViewModel projeto;
+    private double TempoEstimado;
+    private ProjetoViewModel ProjetoViewModel;
+
+    public RequisitoViewModel(int nivelImportancia, int nivelDificuldade, double tempoEstimado, ProjetoViewModel projetoViwModel, String descricao) {
+        NivelImportancia = nivelImportancia;
+        NivelDificuldade = nivelDificuldade;
+        TempoEstimado = tempoEstimado;
+        ProjetoViewModel = projetoViwModel;
+        Descricao = descricao;
+    }
+
+    public RequisitoViewModel() {
+    }
 
     public int getId() {
         return Id;
@@ -51,19 +62,19 @@ public class RequisitoViewModel {
         NivelDificuldade = nivelDificuldade;
     }
 
-    public Number getTempoEstimado() {
+    public double getTempoEstimado() {
         return TempoEstimado;
     }
 
-    public void setTempoEstimado(Number tempoEstimado) {
+    public void setTempoEstimado(double tempoEstimado) {
         TempoEstimado = tempoEstimado;
     }
 
-    public ProjetoViewModel getProjeto() {
-        return projeto;
+    public ProjetoViewModel getProjetoViewModel() {
+        return ProjetoViewModel;
     }
 
-    public void setProjeto(ProjetoViewModel projeto) {
-        this.projeto = projeto;
+    public void setProjetoViewModel(ProjetoViewModel projetoViewModel) {
+        this.ProjetoViewModel = projetoViewModel;
     }
 }

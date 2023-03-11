@@ -9,5 +9,5 @@ public interface IDAO<T> {
 
     boolean Delete(T viewModel);
 
-    ArrayList<T> ReadAll();
+    ArrayList<String> ReadAll();
 }
