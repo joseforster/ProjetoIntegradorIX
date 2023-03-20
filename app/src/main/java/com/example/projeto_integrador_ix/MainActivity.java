@@ -32,5 +32,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btnListarProjeto = findViewById(R.id.btnListarProjetos);
+
+        btnListarProjeto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,ListarProjetoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

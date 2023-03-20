@@ -38,21 +38,17 @@
         android:layout_width="351dp"
         android:layout_height="54dp"
         android:layout_marginTop="20dp"
-        android:background="#03A9F4"
-        android:backgroundTint="#03A9F4"
         android:hint="Nome do projeto"
         android:inputType="textNoSuggestions"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textColorHint="@color/white"
+        android:textColor="#03A9F4"
+        android:textColorHint="#03A9F4"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/texto_calendario"

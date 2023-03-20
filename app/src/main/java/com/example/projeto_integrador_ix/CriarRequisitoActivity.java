@@ -1,29 +1,33 @@
 package com.example.projeto_integrador_ix;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CalendarView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
-import dao.ProjetoDAO;
-import dao.RequisitoDAO;
 import model.ProjetoViewModel;
 import model.RequisitoViewModel;
 
 public class CriarRequisitoActivity extends Activity {
 
+    MeuSQLite gerenciadorBancoDeDados;
+    SQLiteDatabase bancoDeDados;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.criar_requisito);
+
+        gerenciadorBancoDeDados = new MeuSQLite(this, "projetointegrador");
 
         Spinner spinnerNivelDificuldade = findViewById(R.id.lista_nivel_dificuldade);
         Spinner spinnerNivelImportancia = findViewById(R.id.lista_nivel_importancia);
@@ -36,7 +40,8 @@ public class CriarRequisitoActivity extends Activity {
         spinnerNivelDificuldade.setAdapter(adapter);
         spinnerNivelImportancia.setAdapter(adapter);
 
-        ArrayList<String> lista = new ProjetoDAO().ReadAll();
+        //TODO
+        ArrayList<String> lista = this.GetListaProjeto();
 
         Spinner spinnerProjeto = findViewById(R.id.lista_projeto);
 
@@ -44,6 +49,34 @@ public class CriarRequisitoActivity extends Activity {
 
         spinnerProjeto.setAdapter(arrayAdapter);
 
+    }
+
+    private ArrayList<String> GetListaProjeto(){
+
+        ArrayList<String> listaProjeto = new ArrayList<>();
+
+        bancoDeDados = gerenciadorBancoDeDados.getReadableDatabase();
+
+        String[] campos = {"id", "descricao"};
+        Cursor lista = bancoDeDados.query("projeto", campos, null, null, null, null, null );
+
+        lista.moveToFirst();
+
+        while(lista.isAfterLast() == false){
+
+            int id = Integer.parseInt(lista.getString(lista.getColumnIndexOrThrow("id")));
+            String descricao = lista.getString(lista.getColumnIndexOrThrow("descricao"));
+
+            String projeto = id + " - " + descricao;
+
+            listaProjeto.add(projeto);
+
+            lista.moveToNext();
+        }
+
+        bancoDeDados.close();
+
+        return listaProjeto;
     }
 
     public void Cancelar(View view){
@@ -112,13 +145,39 @@ public class CriarRequisitoActivity extends Activity {
                     nomeRequisito
             );
 
-            if(new RequisitoDAO().Create(requisitoViewModel)){
+            boolean isRequisitoCriadoComSucesso = this.InsertRequisito(requisitoViewModel);
+
+            if(isRequisitoCriadoComSucesso){
                 Toast.makeText(this, "Requisito criado com sucesso", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(this, "Erro ao criar requisito", Toast.LENGTH_SHORT).show();
             }
 
             this.Cancelar(view);
+        }
+    }
+
+    private boolean InsertRequisito(RequisitoViewModel viewModel){
+
+        ContentValues valores = new ContentValues();
+        valores.put("descricao",  viewModel.getDescricao());
+        valores.put("nivel_importancia", viewModel.getNivelImportancia());
+        valores.put("nivel_dificuldade", viewModel.getNivelDificuldade());
+        valores.put("tmp_estimado", viewModel.getTempoEstimado());
+        valores.put("projeto_id", viewModel.getProjetoViewModel().getId());
+
+        bancoDeDados = gerenciadorBancoDeDados.getWritableDatabase();
+
+        long resultado;
+
+        resultado = bancoDeDados.insert("requisito", null, valores);
+
+        bancoDeDados.close();
+
+        if (resultado ==-1)
+            return false;
+        else {
+            return true;
         }
     }
 }
