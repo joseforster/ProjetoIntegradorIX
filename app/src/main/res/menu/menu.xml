@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_projeto"
+        android:title="Projeto"
+        app:showAsAction="never" >
+        <menu >
+            <item android:id="@+id/submenu_criar_projeto"
+                android:title="Criar Projeto"/>
+            <item android:id="@+id/submenu_listar_projetos"
+                android:title="Listar Projetos"/>
+        </menu>
+    </item>
+
+    <item android:id="@+id/menu_requisito"
+        android:title="Requisito"
+        app:showAsAction="never" >
+        <menu >
+            <item android:id="@+id/submenu_criar_requisito"
+                android:title="Criar Requisito"/>
+        </menu>
+    </item>
+
+</menu>
